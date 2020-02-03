@@ -24,6 +24,9 @@
     <ClCompile Include="vec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LSystemNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cylinder.h">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="vec.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LSystemNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

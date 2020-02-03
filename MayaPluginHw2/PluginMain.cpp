@@ -29,7 +29,11 @@ MStatus initializePlugin( MObject obj )
         status.perror("registerCommand");
         return status;
     }
-
+	//ASK TA!
+	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus, for example, try the following ??
+	//char buffer[2048]; 
+	//sprintf_s(buffer, 2048, "source \"%s/MyPluginDialog\";", plugin.loadPath()); 
+	//MGlobal::executeCommand(buffer, true);
     return status;
 }
 
