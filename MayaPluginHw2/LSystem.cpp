@@ -118,7 +118,7 @@ void LSystem::addProduction(std::string line)
     }
 }
 
-std::string LSystem::iterate(const std::string& input)
+std::string LSystem::iterate(const std::string& input) //Adds productions from input string.. stores in productions 
 {
     std::string output = "";
     for (unsigned int i = 0; i < input.size(); i++)
@@ -194,7 +194,7 @@ void LSystem::Turtle::applyForwardRot(float degrees)
 void LSystem::process(unsigned int n, 
     std::vector<Branch>& branches)
 {
-    std::vector<Geometry> models;
+    std::vector<Geometry> models; //Geometry :  std::pair<vec3, std::string>  Branch :  std::pair<vec3, vec3>
     process(n,branches,models);
 }
 
@@ -261,7 +261,8 @@ void LSystem::process(unsigned int n,
         }
         else
         {
-            models.push_back(Geometry(turtle.pos, sym));
+            models.push_back(Geometry(turtle.pos, sym)); //Geometry holds all the turtle positions in space and the symbol associated 
+			//Models is a vector of geometries 
         }
     }
 }

@@ -10,7 +10,7 @@ class LSystem
 {
 public:
     typedef std::pair<vec3, std::string> Geometry;
-    typedef std::pair<vec3, vec3> Branch;
+    typedef std::pair<vec3, vec3> Branch; //endpoints of the branch?
 
 public:
     LSystem();
@@ -45,9 +45,9 @@ protected:
     std::vector<std::string> iterations;
     std::vector<std::pair<vec3,vec3>> bboxes;
     std::string current;
-    float mDfltAngle;
-    float mDfltStep;
-    std::string mGrammar;
+    float mDfltAngle;     //Angle 
+    float mDfltStep;      //StepSize
+    std::string mGrammar; //Grammar 
 
     class Turtle
     {
@@ -61,10 +61,10 @@ protected:
         void applyLeftRot(float degrees);
         void applyForwardRot(float degrees);
 
-        vec3 pos;
-        vec3 up;
-        vec3 forward;
-        vec3 left;
+        vec3 pos; //current position of the turtle
+        vec3 up;  //up vector (coord y)
+        vec3 forward; //fwd vector (coord z)
+        vec3 left; //coord x
     };
 };
 

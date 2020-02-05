@@ -17,6 +17,7 @@
 #include <list>
 
 #include "LSystemCmd.h"
+#include "LSystemNode.h"
 
 MStatus initializePlugin( MObject obj )
 {
@@ -29,11 +30,19 @@ MStatus initializePlugin( MObject obj )
         status.perror("registerCommand");
         return status;
     }
-	//ASK TA!
-	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus, for example, try the following ??
-	//char buffer[2048]; 
-	//sprintf_s(buffer, 2048, "source \"%s/MyPluginDialog\";", plugin.loadPath()); 
-	//MGlobal::executeCommand(buffer, true);
+	//Register Node 
+
+	status = plugin.registerNode("LsystemNode", LSystemNode::nodeID, LSystemNode::creator, LSystemNode::initialize);
+	if (!status) {
+		status.perror("registerNode");
+		return status;
+	}
+
+
+	// You can run a MEL script from initializePlugin() to auto-register your MEL dialog boxes and menus
+	char buffer[2048]; 
+	sprintf_s(buffer, 2048, "source \"%s/MyPluginDialog\";", plugin.loadPath().asChar()); 
+	MGlobal::executeCommand(buffer, true);
     return status;
 }
 
@@ -48,6 +57,13 @@ MStatus uninitializePlugin( MObject obj)
 	    return status;
     }
 
+	//Deregister Node 
+	status = plugin.deregisterCommand("LSystemNode");
+	status = plugin.deregisterNode(LSystemNode::nodeID);
+	if (!status) {
+		status.perror("deregisterNode");
+		return status;
+	}
     return status;
 }
 
